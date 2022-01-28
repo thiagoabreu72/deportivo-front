@@ -1,20 +1,26 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Jogador</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-    aria-controls="collapseExample">
-    Link with href
+    aria-controls="collapseExample" size="large">
+    Dados do Jogador
   </a>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user
-      activates the relevant trigger.
-    </div>
-  </div>
- 
 
+  <ion-card class="collapse tabela" id="collapseExample">
+    <ion-grid class="card card-body">
+      <ion-row>Nome: Thiago Morales de Abreu</ion-row>
+      <ion-row>Idade: 30 anos</ion-row>
+      <ion-row>Time: Deportivo FC</ion-row>
+      <ion-row>Camisa: 13</ion-row>
+      <ion-row>Gols Marcados: 5</ion-row>
+      <ion-row>Melhor do Jogo: 0</ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>
