@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-import { JogadorPageRoutingModule } from './jogador-routing.module';
-import { JogadorPage } from './jogador.page';
+
+import { EstatisticasPageRoutingModule } from './estatisticas-routing.module';
+
+import { EstatisticasPage } from './estatisticas.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    JogadorPageRoutingModule
+    EstatisticasPageRoutingModule
   ],
-  declarations: [JogadorPage]
+  declarations: [EstatisticasPage]
 })
-export class JogadorPageModule { }
+export class EstatisticasPageModule {}

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Pagina Inicial</ion-title>
+    <ion-title>Fute Manager</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,10 +9,16 @@
   <form action="">
 
     <br>
-    <ion-avatar class="login">
-      <ion-img src="../../assets/img/ronaldo.jpg"></ion-img>
-    </ion-avatar>
+    <div style="text-align: center;">
+      <img src="../../assets/img/login.jpg" style="display: flexbox;" class="login" alt="">
+    </div>
+    <!--<ion-avatar class="login">
+      <ion-img src="../../assets/img/login.jpg"></ion-img>
+    </ion-avatar>-->
+
     <br>
+    <br>
+
     <ion-item>
       <ion-label stacked> E-mail</ion-label>
       <ion-input type="E-mail"></ion-input>
@@ -24,9 +30,9 @@
     </ion-item>
     <br><br>
     <section>
-      <ion-button size="large" color="tertiary" expand="block" (click)="login()">Entrar</ion-button>
-      <ion-button size="large" color="tertiary" expand="block" outline>Registrar</ion-button>
-      <ion-button size="large" color="tertiary" expand="block">teste</ion-button>
+      <ion-button size="large" expand="block" (click)="login()">Entrar</ion-button>
+      <ion-button size="large" expand="block" outline>Registrar</ion-button>
+      <!--<ion-button size="large"  expand="block">teste</ion-button>-->
     </section>
 
   </form>

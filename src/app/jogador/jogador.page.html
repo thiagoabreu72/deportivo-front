@@ -8,19 +8,63 @@
 </ion-header>
 
 <ion-content>
-  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-    aria-controls="collapseExample" size="large">
+  <!--<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+    aria-controls="collapseExample" style="display: flex;  background-color: slategray; ">
     Dados do Jogador
-  </a>
+  </a>-->
 
-  <ion-card class="collapse tabela" id="collapseExample">
-    <ion-grid class="card card-body">
-      <ion-row>Nome: Thiago Morales de Abreu</ion-row>
-      <ion-row>Idade: 30 anos</ion-row>
-      <ion-row>Time: Deportivo FC</ion-row>
-      <ion-row>Camisa: 13</ion-row>
-      <ion-row>Gols Marcados: 5</ion-row>
-      <ion-row>Melhor do Jogo: 0</ion-row>
-    </ion-grid>
-  </ion-card>
+  <ion-grid>
+    <ion-row style="text-align: center;">
+      <!--<ion-avatar class="alinhar">
+        <img src="../../assets/img/login.jpg" />
+      </ion-avatar>-->
+      <ion-col></ion-col>
+      <ion-col><img src="../../assets/img/login.jpg" alt="" style="border-radius: 5%;"></ion-col>
+      <ion-col></ion-col>
+
+
+    </ion-row>
+    <ion-row>
+      <ion-card class="collapse tabela" id="collapseExample" style="border-radius: 0%;">
+        <ion-grid class="card card-body" style="display: flexbox;">
+          <ion-row>Nome: Thiago Morales de Abreu</ion-row>
+          <ion-row>Idade: 30 anos</ion-row>
+          <ion-row>Time: Deportivo FC</ion-row>
+          <ion-row>Camisa: 13</ion-row>
+          <ion-row>Gols Marcados: 5</ion-row>
+          <ion-row>Melhor do Jogo: 0</ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-row>
+
+    <ion-list>
+      <ion-list-header>Estatísticas</ion-list-header>
+      <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-note slot="end" color="secondary">Thiago Morales de Abreu</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Idade:</ion-label>
+        <ion-note slot="end" color="secondary">30 anos</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Camisa:</ion-label>
+        <ion-note slot="end" color="secondary">8</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Gols Marcados:</ion-label>
+        <ion-note slot="end" color="secondary">8</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Craque do Jogo:</ion-label>
+        <ion-note slot="end" color="secondary">0</ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+
+
 </ion-content>
