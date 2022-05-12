@@ -10,14 +10,11 @@ export class ServicesService {
   rotaJogador: string = 'jogador';
   rotaTimes: string = 'time';
   rotaJogos: string = 'jogos';
+  rotaArtilheiros: string = 'artilheiros';
   //url: string = 'http://localhost:3003/';
   url: string = 'https://deportivo-backend.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
-
-  buscaJogador() {
-
-  }
 
   buscaJogadores(): Observable<any> {
     let urlTodos = this.url + this.rotaJogador + "/todos";
@@ -36,8 +33,16 @@ export class ServicesService {
     return this.http.get<any>(urlTimes, { headers });
   }
 
-  inserirResultado(dados: object): Observable<any> {
+  inserirJogos(dados: object): Observable<any> {
     let urlJogos = this.url + this.rotaJogos;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<any>(urlJogos, dados);
+  }
+
+  inserirArtilheiros(dados: Object): Observable<any> {
+    let urlJogos = this.url + this.rotaArtilheiros;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });

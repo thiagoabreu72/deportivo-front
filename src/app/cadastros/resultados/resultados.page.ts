@@ -27,6 +27,7 @@ export class ResultadosPage implements OnInit {
   /* */
   jogadores: Jogadores[];
   elencoJogo: any[];
+  diaJogo: any;
 
   constructor(private service: ServicesService) { }
 
@@ -46,12 +47,13 @@ export class ResultadosPage implements OnInit {
     const dados = {
       idtimecasa: this.idTimeCasa,
       idtimefora: this.idTimeFora,
-      datajogo: "2022-01-01",
+      datajogo: this.diaJogo,
       golscasa: this.golsCasa,
       golsfora: this.golsFora
     }
 
-    console.table(dados)
+    console.table(dados);
+    console.table(this.elencoJogo)
     /*this.service.inserirResultado(dados).subscribe(() => {
       console.log('não houve erros');
     });*/
@@ -61,6 +63,7 @@ export class ResultadosPage implements OnInit {
   dateValue2 = '';
 
   formatDate(value: string) {
+    this.diaJogo = format(parseISO(value), 'dd/MM/yyyy');
     return format(parseISO(value), 'dd/MM/yyyy');
   }
 
