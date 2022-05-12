@@ -1,3 +1,4 @@
+import { Jogadores } from './../../models/jogadores.model';
 import { ServicesService } from './../../services.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Times } from '../../models/times.models';
@@ -23,10 +24,15 @@ export class ResultadosPage implements OnInit {
   golsCasa: number = 0;
   golsFora: number = 0;
 
+  /* */
+  jogadores: Jogadores[];
+  elencoJogo: any[];
+
   constructor(private service: ServicesService) { }
 
   ngOnInit() {
     this.buscaTimes();
+    this.buscaJogadores();
   }
 
   buscaTimes() {
@@ -53,13 +59,6 @@ export class ResultadosPage implements OnInit {
 
   dateValue = '';
   dateValue2 = '';
-  /*confirm() {
-    this.datetime.confirm();
-  }
-
-  reset() {
-    this.datetime.reset();
-  }*/
 
   formatDate(value: string) {
     return format(parseISO(value), 'dd/MM/yyyy');
@@ -72,6 +71,20 @@ export class ResultadosPage implements OnInit {
       return false;
     }
     return true;
+  }
+
+  async buscaJogadores() {
+    try {
+      await this.service.buscaJogadores().subscribe((retorno) => {
+        this.jogadores = retorno;
+        return retorno;
+      });
+    } catch (error) {
+    }
+  }
+
+  lista() {
+    console.table(this.elencoJogo);
   }
 
 }

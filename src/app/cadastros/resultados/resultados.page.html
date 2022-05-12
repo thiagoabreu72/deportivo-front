@@ -21,18 +21,42 @@
     </ion-popover>
   </ion-item>
   <ion-item>
-    <ion-select [value]="idTimeCasa" okText="Confirma" cancelText="Cancela">
+    <ion-select [(ngModel)]="idTimeCasa" okText="Confirma" cancelText="Cancela">
       <ion-select-option *ngFor="let time of times" [value]="time.idtime">{{time.nome}}</ion-select-option>
     </ion-select>
-    <ion-input type="number" [value]="golsCasa" min="0" max="30"></ion-input>
+    <ion-input type="number" [(ngModel)]="golsCasa" min="0" max="30"></ion-input>
     X
-    <ion-input type="number" [value]="golsFora" min="0" max="30"></ion-input>
-    <ion-select [value]="idTimeFora" okText="Confirma" cancelText="Cancela">
+    <ion-input type="number" [(ngModel)]="golsFora" min="0" max="30"></ion-input>
+    <ion-select [(ngModel)]="idTimeFora" okText="Confirma" cancelText="Cancela">
       <ion-select-option *ngFor="let time of times" [value]="time.idtime">{{time.nome}}</ion-select-option>
     </ion-select>
   </ion-item>
 
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Elenco do Jogo
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Jogadores</ion-label>
+      <ion-select multiple="true" cancelText="Cancela" okText="Ok" [(ngModel)]="elencoJogo">
+        <ion-select-option [value]="jogador.nome" *ngFor="let jogador of jogadores">{{jogador.nome}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngFor="let elenco of elencoJogo">
+    <ion-item>
+      <ion-label style="width: 80%;">{{elenco}}</ion-label>
+      <ion-input style="width: 20%;" type="number" min="0" max="30"></ion-input>
+    </ion-item>
+  </ion-list>
+
   <ion-item>
     <ion-button (click)="inserirResultado()">Gravar</ion-button>
   </ion-item>
+
 </ion-content>

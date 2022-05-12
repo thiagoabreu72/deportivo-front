@@ -12,6 +12,7 @@ export class AppComponent {
     { title: 'Elenco', url: 'elenco', icon: 'people' },//extension-puzzle
     { title: 'Estatísticas', url: 'estatisticas', icon: 'analytics' },
     { title: 'Resultados da Equipe', url: 'resultados', icon: 'book' },
+    { title: 'Cadastro de Resultados', url: 'cadastro/resultados', icon: 'add-circle' },
     { title: 'Sair', url: 'exit', icon: 'exit' }
   ];
   //public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

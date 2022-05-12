@@ -39,10 +39,6 @@ const routes: Routes = [
     path: 'times',
     loadChildren: () => import('./cadastros/times/times.module').then(m => m.TimesPageModule)
   },
-  {
-    path: 'elencos',
-    loadChildren: () => import('./cadastros/elencos/elencos.module').then(m => m.ElencosPageModule)
-  }
 ];
 
 @NgModule({

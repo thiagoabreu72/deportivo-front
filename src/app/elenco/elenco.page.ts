@@ -13,10 +13,7 @@ export class ElencoPage implements OnInit {
 
   jogadores: Jogadores[];
 
-  constructor(private service: ServicesService) {
-
-
-  }
+  constructor(private service: ServicesService) { }
 
   ngOnInit() {
     this.buscaJogadores();
@@ -25,7 +22,6 @@ export class ElencoPage implements OnInit {
   async buscaJogadores() {
     try {
       await this.service.buscaJogadores().subscribe((retorno) => {
-        console.log(retorno);
         this.jogadores = retorno;
         return retorno;
       });

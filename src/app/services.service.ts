@@ -21,7 +21,6 @@ export class ServicesService {
 
   buscaJogadores(): Observable<any> {
     let urlTodos = this.url + this.rotaJogador + "/todos";
-    console.log(urlTodos)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -31,7 +30,6 @@ export class ServicesService {
 
   buscaTimes(): Observable<any> {
     let urlTimes = this.url + this.rotaTimes;
-    console.log(urlTimes)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -40,7 +38,6 @@ export class ServicesService {
 
   inserirResultado(dados: object): Observable<any> {
     let urlJogos = this.url + this.rotaJogos;
-    console.log(urlJogos)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
