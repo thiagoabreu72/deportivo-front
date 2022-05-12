@@ -10,7 +10,8 @@ export class ServicesService {
   rotaJogador: string = 'jogador';
   rotaTimes: string = 'time';
   rotaJogos: string = 'jogos';
-  url: string = 'http://localhost:3003/';
+  //url: string = 'http://localhost:3003/';
+  url: string = 'https://deportivo-backend.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 
