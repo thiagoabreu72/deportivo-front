@@ -9,27 +9,39 @@ const routes: Routes = [
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },  
+    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
+  },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'jogador',
-    loadChildren: () => import('./jogador/jogador.module').then( m => m.JogadorPageModule)
+    loadChildren: () => import('./jogador/jogador.module').then(m => m.JogadorPageModule)
   },
   {
     path: 'resultados',
-    loadChildren: () => import('./resultados/resultados.module').then( m => m.ResultadosPageModule)
+    loadChildren: () => import('./resultados/resultados.module').then(m => m.ResultadosPageModule)
   },
   {
     path: 'estatisticas',
-    loadChildren: () => import('./estatisticas/estatisticas.module').then( m => m.EstatisticasPageModule)
+    loadChildren: () => import('./estatisticas/estatisticas.module').then(m => m.EstatisticasPageModule)
   },
   {
     path: 'elenco',
-    loadChildren: () => import('./elenco/elenco.module').then( m => m.ElencoPageModule)
+    loadChildren: () => import('./elenco/elenco.module').then(m => m.ElencoPageModule)
+  },
+  {
+    path: 'cadastro/resultados',
+    loadChildren: () => import('./cadastros/resultados/resultados.module').then(m => m.ResultadosPageModule)
+  },
+  {
+    path: 'times',
+    loadChildren: () => import('./cadastros/times/times.module').then(m => m.TimesPageModule)
+  },
+  {
+    path: 'elencos',
+    loadChildren: () => import('./cadastros/elencos/elencos.module').then(m => m.ElencosPageModule)
   }
 ];
 
@@ -39,4 +51,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

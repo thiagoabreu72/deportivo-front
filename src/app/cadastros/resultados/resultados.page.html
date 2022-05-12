@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastrar Resultados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input [value]="dateValue2"></ion-input>
+    <ion-button fill="clear" id="open-date-input-2">
+      <ion-icon icon="calendar"></ion-icon>
+    </ion-button>
+    <ion-popover trigger="open-date-input-2" show-backdrop="false">
+      <ng-template>
+        <ion-datetime #popoverDatetime2 presentation="date"
+          (ionChange)="dateValue2 = formatDate(popoverDatetime2.value)"></ion-datetime>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+  <ion-item>
+    <ion-select [value]="idTimeCasa" okText="Confirma" cancelText="Cancela">
+      <ion-select-option *ngFor="let time of times" [value]="time.idtime">{{time.nome}}</ion-select-option>
+    </ion-select>
+    <ion-input type="number" [value]="golsCasa" min="0" max="30"></ion-input>
+    X
+    <ion-input type="number" [value]="golsFora" min="0" max="30"></ion-input>
+    <ion-select [value]="idTimeFora" okText="Confirma" cancelText="Cancela">
+      <ion-select-option *ngFor="let time of times" [value]="time.idtime">{{time.nome}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="inserirResultado()">Gravar</ion-button>
+  </ion-item>
+</ion-content>
