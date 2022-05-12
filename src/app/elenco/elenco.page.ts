@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Jogadores } from './../models/jogadores.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServicesService } from '../services.service';
+import { IonAccordionGroup } from '@ionic/angular';
 
 @Component({
   selector: 'app-elenco',
@@ -7,27 +9,27 @@ import { ServicesService } from '../services.service';
   styleUrls: ['./elenco.page.scss'],
 })
 export class ElencoPage implements OnInit {
+  @ViewChild(IonAccordionGroup, { static: true }) accordionGroup: IonAccordionGroup;
 
-  private retorno;
+  jogadores: Jogadores[];
 
   constructor(private service: ServicesService) {
-    
+
 
   }
 
   ngOnInit() {
+    this.buscaJogadores();
   }
 
   async buscaJogadores() {
     try {
       await this.service.buscaJogadores().subscribe((retorno) => {
         console.log(retorno);
-        this.retorno = retorno;
+        this.jogadores = retorno;
         return retorno;
       });
-
     } catch (error) {
-
     }
   }
 

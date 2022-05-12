@@ -8,8 +8,48 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="buscaJogadores()">
+  <ion-accordion-group>
+    <ion-accordion [value]="jogador.nome" *ngFor="let jogador of jogadores">
+      <ion-item slot="header">
+        <ion-label>{{ jogador.numero + ' - ' + jogador.nome}}
+        </ion-label>
+      </ion-item>
 
-  </ion-button>
+      <ion-list slot="content">
+        <ion-item>
+          <ion-label>Nome</ion-label>
+          <ion-note slot="end" color="secondary">{{jogador.nome}}</ion-note>
+        </ion-item>
 
+        <ion-item>
+          <ion-label>Idade</ion-label>
+          <ion-note slot="end" color="secondary">jogador.idade</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Camisa</ion-label>
+          <ion-note slot="end" color="secondary">{{jogador.numero}}</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Gols Marcados</ion-label>
+          <ion-note slot="end" color="secondary">8</ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Craque do Jogo</ion-label>
+          <ion-note slot="end" color="secondary">0</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>
+
+<!--<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let jogador of jogadores">
+      <ion-label>{{ jogador.numero + ' - ' + jogador.nome}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>-->
