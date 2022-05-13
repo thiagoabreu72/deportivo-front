@@ -42,7 +42,8 @@
     <ion-item>
       <ion-label>Jogadores</ion-label>
       <ion-select multiple="true" cancelText="Cancela" okText="Ok" [(ngModel)]="elencoJogo">
-        <ion-select-option [value]="{jogador: jogador.nome, gols: 0}" *ngFor="let jogador of jogadores">{{jogador.nome}}
+        <ion-select-option [value]="{id: jogador.idjogador, jogador: jogador.nome, gols: 0}"
+          *ngFor="let jogador of jogadores">{{jogador.nome}}
         </ion-select-option>
       </ion-select>
     </ion-item>
@@ -56,7 +57,7 @@
   </ion-list>
 
   <ion-item>
-    <ion-button (click)="inserirResultado()">Gravar</ion-button>
+    <ion-button size="small" expand="block" (click)="inserirResultado()">Gravar</ion-button>
   </ion-item>
 
 </ion-content>

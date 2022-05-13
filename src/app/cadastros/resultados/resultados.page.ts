@@ -5,6 +5,7 @@ import { Times } from '../../models/times.models';
 
 import { IonDatetime } from '@ionic/angular';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
+import { Artilheiros } from 'src/app/models/artilheiros.model';
 
 @Component({
   selector: 'app-resultados',
@@ -17,17 +18,15 @@ export class ResultadosPage implements OnInit {
   times: Times[];
   timeCasa: string;
   timeFora: string;
-
-  /* */
   idTimeCasa: number;
   idTimeFora: number;
-  golsCasa: number = 0;
-  golsFora: number = 0;
-
-  /* */
+  golsCasa: number = undefined;
+  golsFora: number = undefined;
   jogadores: Jogadores[];
   elencoJogo: any[];
   diaJogo: any;
+  idJogo: number;
+  dadosArtilheiros: Artilheiros;
 
   constructor(private service: ServicesService) { }
 
@@ -42,7 +41,16 @@ export class ResultadosPage implements OnInit {
     });
   }
 
-  inserirResultado() {
+  async inserirResultado() {
+    await this.inserirJogos();
+    setTimeout(() => {
+      this.inserirArtilheiros();
+    }, 1000);
+    this.limpaCampos();
+  }
+
+
+  async inserirJogos() {
 
     const dados = {
       idtimecasa: this.idTimeCasa,
@@ -52,11 +60,33 @@ export class ResultadosPage implements OnInit {
       golsfora: this.golsFora
     }
 
-    console.table(dados);
-    console.table(this.elencoJogo)
-    /*this.service.inserirResultado(dados).subscribe(() => {
-      console.log('não houve erros');
-    });*/
+    await this.service.inserirJogos(dados).subscribe(retorno => {
+      this.idJogo = retorno.idjogo;
+      alert('Registro inserido com sucesso.');
+    }, (error) => {
+      alert('Houve erro ao inserir resultados.');
+    });
+  }
+
+  inserirArtilheiros() {
+
+    let elencoFiltrado = this.elencoJogo.filter(novo => {
+      return novo.gols > 0;
+    });
+
+    for (let artilharia of elencoFiltrado) {
+      this.dadosArtilheiros = {
+        idjogo: this.idJogo,
+        idtime: 1,
+        idjogador: artilharia.id,
+        qtdgols: artilharia.gols,
+        craque: 0
+      }
+
+      this.service.inserirArtilheiros(this.dadosArtilheiros).subscribe(() => { }, (error) => {
+        alert('Houve erro ao inserir artilheiros.');
+      });
+    }
   }
 
   dateValue = '';
@@ -77,17 +107,28 @@ export class ResultadosPage implements OnInit {
   }
 
   async buscaJogadores() {
-    try {
-      await this.service.buscaJogadores().subscribe((retorno) => {
-        this.jogadores = retorno;
-        return retorno;
-      });
-    } catch (error) {
-    }
+    await this.service.buscaJogadores().subscribe((retorno) => {
+      this.jogadores = retorno;
+    });
   }
 
   lista() {
     console.table(this.elencoJogo);
+  }
+
+
+  limpaCampos() {
+    this.timeCasa = '';
+    this.timeFora = '';
+    this.idTimeCasa = 0;
+    this.idTimeFora = 0;
+    this.golsCasa = undefined;
+    this.golsFora = undefined;
+    this.diaJogo = '';
+    this.idJogo = 0;
+    this.elencoJogo = [];
+    this.jogadores = [];
+    this.ngOnInit();
   }
 
 }
