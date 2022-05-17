@@ -1,3 +1,4 @@
+import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultadosPage implements OnInit {
 
-  constructor() { }
+  constructor(private service: ServicesService) { }
 
   ngOnInit() {
+    this.buscaResultados();
   }
+
+  buscaResultados() {
+    this.service.buscaResultados().subscribe(dados => {
+      console.log(dados);
+    })
+  }
+
 
 }

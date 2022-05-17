@@ -49,4 +49,12 @@ export class ServicesService {
     return this.http.post<any>(urlJogos, dados);
   }
 
+  buscaResultados(): Observable<any> {
+    let urlJogos = this.url + this.rotaJogos + '/todos';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<any>(urlJogos);
+  }
+
 }
