@@ -9,4 +9,20 @@
 
 <ion-content>
 
+  <ion-list *ngFor="let resultado of this.resultados">
+    <ion-item>
+      <ion-item>
+        <ion-label>{{resultado.datajogo}}</ion-label>
+      </ion-item>
+      <ion-item>
+        {{resultado.timecasa}} {{resultado.golscasa}} X
+        {{resultado.golsfora}} {{resultado.timefora}}
+      </ion-item>
+
+
+      <!--<ion-card style="width: 100%; text-align: center;">{{resultado.timecasa}} {{resultado.golscasa}} X {{resultado.golsfora}} {{resultado.timefora}}        
+      </ion-card>-->
+    </ion-item>
+  </ion-list>
+
 </ion-content>

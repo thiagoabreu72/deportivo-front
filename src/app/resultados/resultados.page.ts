@@ -1,3 +1,4 @@
+import { Resultados } from './../models/resultados.model';
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultadosPage implements OnInit {
 
+  resultados: Resultados[];
+
   constructor(private service: ServicesService) { }
 
   ngOnInit() {
@@ -16,9 +19,8 @@ export class ResultadosPage implements OnInit {
 
   buscaResultados() {
     this.service.buscaResultados().subscribe(dados => {
+      this.resultados = dados;
       console.log(dados);
     })
   }
-
-
 }

@@ -116,7 +116,6 @@ export class ResultadosPage implements OnInit {
     console.table(this.elencoJogo);
   }
 
-
   limpaCampos() {
     this.timeCasa = '';
     this.timeFora = '';
