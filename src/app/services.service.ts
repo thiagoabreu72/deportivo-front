@@ -18,43 +18,34 @@ export class ServicesService {
 
   buscaJogadores(): Observable<any> {
     let urlTodos = this.url + this.rotaJogador + "/todos";
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this.http.get<any>(urlTodos, { headers });
+    return this.http.get<any>(urlTodos);
   }
 
   buscaTimes(): Observable<any> {
     let urlTimes = this.url + this.rotaTimes;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-    return this.http.get<any>(urlTimes, { headers });
+    return this.http.get<any>(urlTimes);
   }
 
   inserirJogos(dados: object): Observable<any> {
     let urlJogos = this.url + this.rotaJogos;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
     return this.http.post<any>(urlJogos, dados);
   }
 
   inserirArtilheiros(dados: Object): Observable<any> {
     let urlJogos = this.url + this.rotaArtilheiros;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
     return this.http.post<any>(urlJogos, dados);
+  }
+
+  buscaArtilheirosPorJogos(idJogo): Observable<any> {
+    let urlArtilheiros = `${this.url}${this.rotaJogos}/${this.rotaArtilheiros}/${idJogo}`;
+    return this.http.get<any>(urlArtilheiros);
   }
 
   buscaResultados(): Observable<any> {
     let urlJogos = this.url + this.rotaJogos + '/todos';
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
     return this.http.get<any>(urlJogos);
   }
+
+
 
 }

@@ -72,7 +72,8 @@ export class ResultadosPage implements OnInit {
   async inserirArtilheiros(idjogo: number) {
 
     let jogo = idjogo;
-  
+    let indice = 0;
+
     for (let artilharia of this.elencoJogo) {
       this.dadosArtilheiros = {
         idjogo: jogo,
@@ -83,10 +84,17 @@ export class ResultadosPage implements OnInit {
       }
 
       this.service.inserirArtilheiros(this.dadosArtilheiros).subscribe(data => {
+        if (this.elencoJogo.length === indice) {
+          alert('Registro Inserido com sucesso!');
+          this.limpaCampos();
+        }
+
         console.log(data);
       }, (error) => {
         alert(`Houve erro ao inserir artilheiros.`);
       });
+
+      indice++;
 
     }
   }

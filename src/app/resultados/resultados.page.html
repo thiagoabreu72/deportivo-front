@@ -10,17 +10,26 @@
 <ion-content>
   <ion-progress-bar type="indeterminate" *ngIf="!this.resultados"></ion-progress-bar>
 
-
   <ion-accordion-group>
     <ion-accordion value="{{resultado.idjogo}}" *ngFor="let resultado of this.resultados">
-      <ion-item slot="header">
-        <ion-label>{{resultado.datajogo}} - {{resultado.casaabr}} X {{resultado.foraabr}}</ion-label>
+      <ion-item slot="header" (click)="buscaArtilheirosPorJogo(resultado.idjogo)">
+        <ion-label style="text-align: center;">{{resultado.datajogo}} - {{resultado.casaabr}}
+          {{resultado.golscasa}} X {{resultado.golsfora}}
+          {{resultado.foraabr}}</ion-label>
       </ion-item>
 
       <ion-list slot="content">
         <ion-item>
           {{resultado.timecasa}} {{resultado.golscasa}} X
           {{resultado.golsfora}} {{resultado.timefora}}
+        </ion-item>
+        <ion-item>
+          <ion-list>
+            Gols marcados por:
+            <ion-item *ngFor="let artilheiro of this.artilheiros">
+              {{artilheiro.nome}} - gols: {{artilheiro.qtdgols}}
+            </ion-item>
+          </ion-list>
         </ion-item>
       </ion-list>
     </ion-accordion>

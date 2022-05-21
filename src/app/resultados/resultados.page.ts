@@ -1,3 +1,4 @@
+import { Artilheiros } from 'src/app/models/artilheiros.model';
 import { Resultados } from './../models/resultados.model';
 import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class ResultadosPage implements OnInit {
 
   resultados: Resultados[];
+  artilheiros: Artilheiros[];
 
   constructor(private service: ServicesService) { }
 
@@ -20,7 +22,12 @@ export class ResultadosPage implements OnInit {
   buscaResultados() {
     this.service.buscaResultados().subscribe(dados => {
       this.resultados = dados;
-      console.log(dados);
     })
+  }
+
+  buscaArtilheirosPorJogo(idJogo) {
+    this.service.buscaArtilheirosPorJogos(idJogo).subscribe(dados => {
+      this.artilheiros = dados;
+    });
   }
 }
