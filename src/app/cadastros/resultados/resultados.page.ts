@@ -1,6 +1,6 @@
 import { Jogadores } from './../../models/jogadores.model';
 import { ServicesService } from './../../services.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { Times } from '../../models/times.models';
 
 import { IonDatetime } from '@ionic/angular';
@@ -44,9 +44,10 @@ export class ResultadosPage implements OnInit {
   async inserirResultado() {
     await this.inserirJogos();
     setTimeout(() => {
-      this.inserirArtilheiros();
+      this.inserirArtilheiros(this.idJogo);
     }, 1000);
-    this.limpaCampos();
+    //this.inserirArtilheiros(48);
+    //this.limpaCampos();
   }
 
 
@@ -62,30 +63,31 @@ export class ResultadosPage implements OnInit {
 
     await this.service.inserirJogos(dados).subscribe(retorno => {
       this.idJogo = retorno.idjogo;
-      alert('Registro inserido com sucesso.');
     }, (error) => {
       alert('Houve erro ao inserir resultados.');
     });
+
   }
 
-  inserirArtilheiros() {
+  async inserirArtilheiros(idjogo: number) {
 
-    let elencoFiltrado = this.elencoJogo.filter(novo => {
-      return novo.gols > 0;
-    });
-
-    for (let artilharia of elencoFiltrado) {
+    let jogo = idjogo;
+  
+    for (let artilharia of this.elencoJogo) {
       this.dadosArtilheiros = {
-        idjogo: this.idJogo,
+        idjogo: jogo,
         idtime: 1,
         idjogador: artilharia.id,
         qtdgols: artilharia.gols,
         craque: 0
       }
 
-      this.service.inserirArtilheiros(this.dadosArtilheiros).subscribe(() => { }, (error) => {
-        alert('Houve erro ao inserir artilheiros.');
+      this.service.inserirArtilheiros(this.dadosArtilheiros).subscribe(data => {
+        console.log(data);
+      }, (error) => {
+        alert(`Houve erro ao inserir artilheiros.`);
       });
+
     }
   }
 
@@ -93,7 +95,7 @@ export class ResultadosPage implements OnInit {
   dateValue2 = '';
 
   formatDate(value: string) {
-    this.diaJogo = format(parseISO(value), 'dd/MM/yyyy');
+    this.diaJogo = format(parseISO(value), 'yyyy-MM-dd');
     return format(parseISO(value), 'dd/MM/yyyy');
   }
 
@@ -110,10 +112,6 @@ export class ResultadosPage implements OnInit {
     await this.service.buscaJogadores().subscribe((retorno) => {
       this.jogadores = retorno;
     });
-  }
-
-  lista() {
-    console.table(this.elencoJogo);
   }
 
   limpaCampos() {

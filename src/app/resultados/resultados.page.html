@@ -8,21 +8,21 @@
 </ion-header>
 
 <ion-content>
+  <ion-progress-bar type="indeterminate" *ngIf="!this.resultados"></ion-progress-bar>
 
-  <ion-list *ngFor="let resultado of this.resultados">
-    <ion-item>
-      <ion-item>
-        <ion-label>{{resultado.datajogo}}</ion-label>
-      </ion-item>
-      <ion-item>
-        {{resultado.timecasa}} {{resultado.golscasa}} X
-        {{resultado.golsfora}} {{resultado.timefora}}
+
+  <ion-accordion-group>
+    <ion-accordion value="{{resultado.idjogo}}" *ngFor="let resultado of this.resultados">
+      <ion-item slot="header">
+        <ion-label>{{resultado.datajogo}} - {{resultado.casaabr}} X {{resultado.foraabr}}</ion-label>
       </ion-item>
 
-
-      <!--<ion-card style="width: 100%; text-align: center;">{{resultado.timecasa}} {{resultado.golscasa}} X {{resultado.golsfora}} {{resultado.timefora}}        
-      </ion-card>-->
-    </ion-item>
-  </ion-list>
-
+      <ion-list slot="content">
+        <ion-item>
+          {{resultado.timecasa}} {{resultado.golscasa}} X
+          {{resultado.golsfora}} {{resultado.timefora}}
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>

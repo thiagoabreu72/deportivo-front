@@ -42,7 +42,7 @@
     <ion-item>
       <ion-label>Jogadores</ion-label>
       <ion-select multiple="true" cancelText="Cancela" okText="Ok" [(ngModel)]="elencoJogo">
-        <ion-select-option [value]="{id: jogador.idjogador, jogador: jogador.nome, gols: 0}"
+        <ion-select-option [value]="{id: jogador.idjogador, jogador: jogador.nome, gols: undefined}"
           *ngFor="let jogador of jogadores">{{jogador.nome}}
         </ion-select-option>
       </ion-select>
@@ -51,8 +51,8 @@
 
   <ion-list *ngFor="let elenco of elencoJogo">
     <ion-item>
-      <ion-label style="width: 80%;">{{elenco.jogador}}</ion-label>
-      <ion-input style="width: 20%;" type="number" min="0" max="30" [(ngModel)]="elenco.gols"></ion-input>
+      <ion-label style="width: 90%;">{{elenco.jogador}}</ion-label>
+      <ion-input style="width: 10%;" type="number" min="0" max="30" [(ngModel)]="elenco.gols" placeholder="0"></ion-input>
     </ion-item>
   </ion-list>
 

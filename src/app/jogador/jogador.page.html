@@ -42,9 +42,16 @@
             <ion-label>Blue</ion-label>
           </ion-item>
         </ion-list>
-      </ion-accordion>      
+      </ion-accordion>
 
     </ion-accordion-group>
+
+    <div class="zippy">
+      <div (click)="toggle()">Toggle</div>
+      <div [hidden]="!visible">teste
+      </div>
+    </div>
+
 
     <!--<ion-list>
       <ion-list-header>DADOS DO JOGADOR</ion-list-header>
