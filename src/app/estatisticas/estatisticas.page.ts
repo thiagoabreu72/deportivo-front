@@ -1,3 +1,5 @@
+import { Estatisticas } from './../models/estatisticas.models';
+import { ServicesService } from './../services.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstatisticasPage implements OnInit {
 
-  constructor() { }
+  estatisticas: Estatisticas[];
+
+  constructor(private service: ServicesService) { }
 
   ngOnInit() {
+  }
+
+  buscaEstatisticas() {
+    this.service.buscaEstatisticas().subscribe(dados => {
+      this.estatisticas = dados;
+      console.table(this.estatisticas)
+    });
   }
 
 }

@@ -46,6 +46,9 @@ export class ServicesService {
     return this.http.get<any>(urlJogos);
   }
 
-
+  buscaEstatisticas(): Observable<any> {
+    let urlJogos = this.url + this.rotaJogos + '/estatistica';
+    return this.http.get<any>(urlJogos);
+  }
 
 }
