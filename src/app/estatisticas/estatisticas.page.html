@@ -9,5 +9,48 @@
 
 
 <ion-content>
-  <ion-button (click)="buscaEstatisticas()">teste</ion-button>
+
+  <ion-list *ngFor="let estatistica of this.estatisticas">
+    <ion-item>
+      <ion-label>Vitórias</ion-label>
+      <ion-note slot="end" color="secondary">{{estatistica.vitorias}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Derrotas</ion-label>
+      <ion-note slot="end" color="secondary">{{estatistica.derrotas}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Empates</ion-label>
+      <ion-note slot="end" color="secondary">{{estatistica.empates}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Qtd. Jogos</ion-label>
+      <ion-note slot="end" color="secondary">{{estatistica.qtdjogos}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gols Feitos</ion-label>
+      <ion-note slot="end" color="secondary">{{estatistica.feitos}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gols Sofridos</ion-label>
+      <ion-note slot="end" color="secondary">{{estatistica.sofridos}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Média Gols Feitos</ion-label>
+      <ion-note slot="end" color="secondary">{{estatistica.mediafeitos}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Média Gols Sofridos</ion-label>
+      <ion-note slot="end" color="secondary">{{estatistica.mediasofridos}}</ion-note>
+    </ion-item>
+
+  </ion-list>
+
+  <!--<ion-button (click)="buscaEstatisticas()">teste</ion-button>
+  <highcharts-chart 
+  [Highcharts]="highcharts" 
+  [options]="chartOptions" 
+  style="width:100%; height: 400px; display:flex">
+
+  </highcharts-chart>-->
 </ion-content>
